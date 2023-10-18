@@ -1,0 +1,33 @@
+# Specify filepatterns you want git to ignore.
+
+*.sublime-project
+*.sublime-workspace
+*checkpoint.ipynb
+
+#these are just my personal notes to self.
+#If y'all really want them, I can share, but it's not that exciting
+mere*
+
+# LaTeX auxiliary files
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
+*.synctex.gz
+*.fdb_latexmk
+
+## Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
