@@ -31,3 +31,6 @@ mere*
 *-blx.aux
 *-blx.bib
 *.run.xml
+
+## Desktop Services Store files (macOS)
+.DS_Store
