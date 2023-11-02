@@ -28,7 +28,7 @@ Raw Data
     AEK201: '../data/raw_data/EIM-data-AEK201/EIMTimeSeriesResults_2023Oct22_222975.csv'
     AFL259: too large to upload to github, stored elsewhere
     APK309: '../data/raw_data/EIM-data-APK309/GroundwaterTimeSeriesResults_2023Oct19_96705.csv'
-    APK310: pending from Meredith
+    APK310: '../data/raw_data/EIM-data-APK310/GroundwaterTimeSeriesResults_2023Nov02_190488.csv'
 
   Raw Weather Data
     '../data/raw_data/open-weather-spokane.csv'
