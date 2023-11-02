@@ -1,0 +1,38 @@
+Note: you may have to add more ../ to the front of your paths if you're in 
+a subfolder deeper than one level below the main
+Also, these are unix (linux/mac) paths. You may have to change things in windows idk
+
+Pickled Data
+  Pickled Well Data and short versions
+    AEK201: '../data/pickled_data/AEK201_all_data.pkl'
+            '../data/pickled_data/AEK201_short.pkl'
+
+    AFL259: '../data/pickled_data/AFL259_all_data.pkl'
+            '../data/pickled_data/AFL259_short.pkl'
+
+    APK309: '../data/pickled_data/APK309_all_data.pkl'
+            '../data/pickled_data/APK309_short.pkl'
+
+    APK310: '../data/pickled_data/APK310_all_data.pkl'
+            '../data/pickled_data/APK310_short.pkl'
+
+  Pickled Other Data
+    '../data/pickled_data/level_data.pkl'
+    '../data/pickled_data/sw_data_gage_ht.pkl'
+    '../data/pickled_data/sw_data_discharge_cfs.pkl'
+    '../data/pickled_data/noaa_data.pkl'
+    '../data/pickled_data/wx_data.pkl'
+
+Raw Data
+  Raw Well Data
+    AEK201: '../data/raw_data/EIM-data-AEK201/EIMTimeSeriesResults_2023Oct22_222975.csv'
+    AFL259: too large to upload to github, stored elsewhere
+    APK309: '../data/raw_data/EIM-data-APK309/GroundwaterTimeSeriesResults_2023Oct19_96705.csv'
+    APK310: pending from Meredith
+
+  Raw Weather Data
+    '../data/raw_data/open-weather-spokane.csv'
+    '../data/raw_data/noaa-data.csv'
+
+  Raw Surface Water Data
+    '../data/raw_data/USGS-Surface-Water-Site-12422500.tsv'
