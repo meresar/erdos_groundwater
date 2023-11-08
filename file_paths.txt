@@ -3,21 +3,44 @@ a subfolder deeper than one level below the main
 Also, these are unix (linux/mac) paths. You may have to change things in windows idk
 
 Pickled Data
-  Pickled Well Data and short versions
-    AEK201: '../data/pickled_data/AEK201_all_data.pkl'
+  Pickled Well Data (just date and avg well level), consolidated data, 
+  and short version of consolidated data
+  well_data doesn't take discontinuities into account, be careful using it!
+    AEK201: '../data/pickled_data/AEK201_well_data.pkl'
+            '../data/pickled_data/AEK201_all_data.pkl'
             '../data/pickled_data/AEK201_short.pkl'
+            dates in short and well data run from
+              min_date = datetime(2006,2,7)
+              max_date = datetime(2017,9,28)
 
-    AFL259: '../data/pickled_data/AFL259_all_data.pkl'
+    AFL259: '../data/pickled_data/AFL259_well_data.pkl'
+            '../data/pickled_data/AFL259_all_data.pkl'
             '../data/pickled_data/AFL259_short.pkl'
+            dates in short and well data run from
+              min_date = datetime(2006,2,7)
+              max_date = datetime(2017,6,6)
 
-    APK309: '../data/pickled_data/APK309_all_data.pkl'
-            '../data/pickled_data/APK309_short.pkl'
+    APK309: '../data/pickled_data/APK309_well_data.pkl'
+            '../data/pickled_data/APK309_all_data.pkl'
+            '../data/pickled_data/APK309_shortA.pkl'
+            '../data/pickled_data/APK309_shortB.pkl'
+            ********************
+            This one has a discontinuity in the middle!! I've split it into
+            * shortA with
+              min_date = datetime(2006,6,21)
+              max_date = datetime(2014,1,13)
+            * shortB with
+              min_date = datetime(2014,4,10)
+              max_date = datetime(2017,9,28)
 
-    APK310: '../data/pickled_data/APK310_all_data.pkl'
+    APK310: '../data/pickled_data/APK310_well_data.pkl'
+            '../data/pickled_data/APK310_all_data.pkl'
             '../data/pickled_data/APK310_short.pkl'
+            dates in short and well data run from
+              min_date = datetime(2006,6,21)
+              max_date = datetime(2017,9,28)
 
   Pickled Other Data
-    '../data/pickled_data/level_data.pkl'
     '../data/pickled_data/sw_data_gage_ht.pkl'
     '../data/pickled_data/sw_data_discharge_cfs.pkl'
     '../data/pickled_data/noaa_data.pkl'
