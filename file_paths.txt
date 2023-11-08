@@ -27,11 +27,11 @@ Pickled Data
             ********************
             This one has a discontinuity in the middle!! I've split it into
             * shortA with
-              min_date = datetime(2006,6,21)
-              max_date = datetime(2014,1,13)
+              min_dateA = datetime(2006,6,21)
+              max_dateA = datetime(2014,1,13)
             * shortB with
-              min_date = datetime(2014,4,10)
-              max_date = datetime(2017,9,28)
+              min_dateB = datetime(2014,4,10)
+              max_dateB = datetime(2017,9,28)
 
     APK310: '../data/pickled_data/APK310_well_data.pkl'
             '../data/pickled_data/APK310_all_data.pkl'
