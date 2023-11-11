@@ -4,6 +4,10 @@
 *.sublime-workspace
 *checkpoint.ipynb
 
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
 #these are just my personal notes to self.
 #If y'all really want them, I can share, but it's not that exciting
 mere*
