@@ -7,15 +7,11 @@ import pickle
 AEK201_path = '../data/pickled_data/AEK201_short.pkl'
 AFL259_path = '../data/pickled_data/AFL259_short.pkl'
 APK309_path = '../data/pickled_data/APK309_short.pkl'
-APK309A_path = '../data/pickled_data/APK309_shortA.pkl'
-APK309B_path = '../data/pickled_data/APK309_shortB.pkl'
 APK310_path = '../data/pickled_data/APK310_short.pkl'
 
 WELLS = {'AEK201':AEK201_path,
          'AFL259':AFL259_path,
          'APK309':APK309_path,
-         'APK309A':APK309A_path,
-         'APK309B':APK309B_path,
          'APK310':APK310_path}
 
 def load_data(WELL=None):
@@ -41,7 +37,7 @@ def load_data(WELL=None):
 
 DEFAULT_FEATURES = ['date', 'avg_well_depth', 'gage_ht', 'discharge_cfs',
                         'prcp','temp_avg', 'hum_avg', 'hPa_avg', 'wind_avg',
-                        'gust_avg']
+                        'gust_avg', 'prcp_lag_45D']
 
 def select_features(df, features=DEFAULT_FEATURES):
     ''' Select the desired subset of features
