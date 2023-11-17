@@ -4,9 +4,9 @@ import numpy as np
 
 def gw_plot(train, test, 
 	    	dates=None, start_date=None,  
-		pred=None, model=None,
-            	train_limit=None, normalized=False, 
-		save_file=None):
+            pred=None, model=None,
+            train_limit=None, normalized=False, 
+            save_file=None):
     
     """ Plot the training data, and test data.
     
