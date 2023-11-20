@@ -38,3 +38,9 @@ mere*
 
 ## Desktop Services Store files (macOS)
 .DS_Store
+
+## Vim swap files
+*.sw?
+
+## Jupyter checkpoints
+*-checkpoint.py
