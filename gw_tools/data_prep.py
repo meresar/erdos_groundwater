@@ -1,3 +1,4 @@
+import datetime
 import numpy as np
 import pandas as pd
 import pickle
@@ -15,6 +16,19 @@ DKEYS = {'AEK201':AEK201_path,
          'APK309':APK309_path,
          'APK310':APK310_path,
          'FEATS':FEATS_path}
+
+## Start Dates
+well_start_dates = {'AEK201':datetime.datetime(2005,8,22),
+                    'AFL259':datetime.datetime(2005,8,21),
+                    'APK309':datetime.datetime(2006,6,21),
+                    'APK310':datetime.datetime(2006,6,21)}
+
+## End Dates
+well_end_dates = {'AEK201':datetime.datetime(2017,9,28),
+                  'AFL259':datetime.datetime(2017,9,28),
+                  'APK309':datetime.datetime(2017,9,28),
+                  'APK310':datetime.datetime(2017,5,4)}
+
 
 def load_data(WELL=None):
     '''Load data for a well from a pickle.
@@ -141,4 +155,8 @@ def prep_data_for_training(df, n=365):
 
     return X_train, X_holdout, y_train, y_holdout, dt_train, dt_holdout
 
+def get_end_date(well):
+    return well_end_dates[well]
 
+def get_start_date(well):
+    return well_start_dates[well]
