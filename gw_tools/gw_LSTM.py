@@ -59,6 +59,9 @@ class gw_LSTM(BaseEstimator,TransformerMixin):
         
 
     def reshape_data(self, scaled_np, y=None):
+        # getting dumb errors so we're just gonna double check that we're
+        # starting with a numpy array
+        scaled_np = np.array(scaled_np)
         X = []
         for i in range(len(scaled_np)-self.WINDOW_SIZE):
             row = [a for a in scaled_np[i:i+self.WINDOW_SIZE]]
@@ -114,6 +117,7 @@ class gw_LSTM(BaseEstimator,TransformerMixin):
             self.model.fit(X_window, y_train[self.WINDOW_SIZE:], 
                             epochs=self.EPOCHS, 
                             callbacks=[self.CHECKPOINT])
+            # in order to implement this, we need to plug a val set into the model fitting, and I haven't worked out the details for how to do that, so just setting checkpoint as false all the time now I think
 
         ## Return a warm up set to stick to the top of the test set later
         self.warmup = pd.DataFrame(X_train).tail(self.WINDOW_SIZE)
@@ -148,6 +152,6 @@ class gw_LSTM(BaseEstimator,TransformerMixin):
         return np.array(preds)
 
     def score(self,X,y=None):
-        pred = self.model.predict(X)
+        pred = self.predict(X)
         score = np.mean((pred - y)**2)
         return -score
