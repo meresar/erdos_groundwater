@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 
+import keras
+
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import *
@@ -9,15 +11,15 @@ from tensorflow.keras.losses import MeanSquaredError
 from tensorflow.keras.metrics import RootMeanSquaredError
 from tensorflow.keras.optimizers import Adam
 
-from tensorflow.keras.models import load_model
+from sklearn.base import BaseEstimator,TransformerMixin
 
 ## Defining a custom sklearn estimator to implement our keras model
 ## inside a sklearn pipeline
 class gw_LSTM(BaseEstimator,TransformerMixin):
     def __init__(self, 
                  WINDOW_SIZE=6,
-                 LSTM_UNITS=64,
                  NUM_FEATS=12,
+                 LSTM_UNITS=64,
                  D_MAX_LAYERS = 1, D_TOP_UNITS = 8, D_MIN_UNITS=2,
                  D_UNIT_SCALE = 0.5,
                  LEARNING_RATE=0.0005, LOSS=MeanSquaredError(), 
@@ -98,10 +100,9 @@ class gw_LSTM(BaseEstimator,TransformerMixin):
         X_window = self.reshape_data(X_train)
 
         if self.CHECKPOINT == False:
-            self.model.fit(X_window, y_train 
-                            epochs=self.EPOCHS)
+            self.model.fit(X_window, y_train, epochs=self.EPOCHS)
         else:
-            self.model.fit(X_window, y_train 
+            self.model.fit(X_window, y_train, 
                             epochs=self.EPOCHS, 
                             callbacks=[self.CHECKPOINT])
 
