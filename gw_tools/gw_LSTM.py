@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import *
@@ -10,15 +13,17 @@ from tensorflow.keras.models import load_model
 
 ## Defining a custom sklearn estimator to implement our keras model
 ## inside a sklearn pipeline
-class gw_cnn(BaseEstimator,TransformerMixin):
+class gw_LSTM(BaseEstimator,TransformerMixin):
     def __init__(self, 
                  WINDOW_SIZE=6,
                  LSTM_UNITS=64,
+                 NUM_FEATS=12,
                  D_MAX_LAYERS = 1, D_TOP_UNITS = 8, D_MIN_UNITS=2,
                  D_UNIT_SCALE = 0.5,
                  LEARNING_RATE=0.0005, LOSS=MeanSquaredError(), 
-                 EPOCHS=100, BATCH_SIZE=64, STOP_DELTA=.05,
-                 RANDOM_STATE = 90210):
+                 EPOCHS=100, 
+                 RANDOM_STATE = 90210,
+                 CHECKPOINT = False):
         
         self.RANDOM_STATE = RANDOM_STATE
         if self.RANDOM_STATE is not None:
@@ -35,25 +40,21 @@ class gw_cnn(BaseEstimator,TransformerMixin):
         self.LOSS = LOSS
 
         self.EPOCHS = EPOCHS
-        self.BATCH_SIZE = BATCH_SIZE
-       
-        self.STOP_DELTA = STOP_DELTA
 
         self.RANDOM_STATE = RANDOM_STATE
 
         self.model = None
 
+        self.warmup = None
+
         
 
     def reshape_data(self, scaled_np, y=None):
         X = []
-        y = []
         for i in range(len(scaled_np)-self.WINDOW_SIZE):
             row = [a for a in scaled_np[i:i+self.WINDOW_SIZE]]
             X.append(row)
-            label = scaled_np[i+self.WINDOW_SIZE][0]
-            y.append(label)
-        return np.array(X), np.array(y)
+        return np.array(X)
         
     def make_model(self):
         ## Initialize a sequential model object
@@ -89,20 +90,45 @@ class gw_cnn(BaseEstimator,TransformerMixin):
         ## Return the model
         self.model = model
 
-    def fit(self,X,y=None):
-        callback = EarlyStopping(monitor='loss', patience=4, 
-                                    min_delta=self.STOP_DELTA)
-        self.make_model(X,y)
-        self.model.fit(X,y, 
-                        epochs=self.EPOCHS,
-                        callbacks=[callback])
+
+    def fit(self,X_train,y_train):
+        self.make_model()
+
+        ## reshape the data to go into the fit
+        X_window = self.reshape_data(X_train)
+
+        if self.CHECKPOINT == False:
+            self.model.fit(X_window, y_train 
+                            epochs=self.EPOCHS)
+        else:
+            self.model.fit(X_window, y_train 
+                            epochs=self.EPOCHS, 
+                            callbacks=[self.CHECKPOINT])
+
+        ## Return a warm up set to stick to the top of the test set later
+        self.warmup = pd.DataFrame(X_train).tail(self.WINDOW_SIZE)
         
     def transform(self,X,y=None):
         self.model.transform(X,y)
 
-    def predict(self,X,y=None):
-        #I think my loop is gonna go here
-        return self.model.predict(X,y)
+    def predict(self,X_test,y_test=None):
+        ## stick the warmup set to the top of the test set
+        X_df = pd.concat([self.warmup, pd.DataFrame(X_test)])
+
+        preds=[]
+
+        for i in range(X_test.shape[0]):
+            # reshape a row at a time
+            row = to_X_y_multi(X_df[i:i+WINDOW_SIZE+1])
+            
+            # make prediction and store it
+            pred = LSTM_mod.predict(row).flatten()[0]
+            preds.append(pred)
+            
+            #insert prediction into the correct place for the next loop
+            X_df[WINDOW_SIZE+i,0] = pred
+
+        return np.array(preds)
 
     def score(self,X,y=None):
         pred = self.model.predict(X)
