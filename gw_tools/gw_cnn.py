@@ -57,8 +57,6 @@ class gw_cnn(BaseEstimator,TransformerMixin):
 
         self.model = None
 
-        
-
     def reshape_data(self, X, y=None):
         return X.reshape((X.shape[0], X.shape[1], 1))
         
