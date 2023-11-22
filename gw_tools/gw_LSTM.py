@@ -25,11 +25,16 @@ class gw_LSTM(BaseEstimator,TransformerMixin):
                  LEARNING_RATE=0.0005, LOSS=MeanSquaredError(), 
                  EPOCHS=100, 
                  RANDOM_STATE = 90210,
-                 CHECKPOINT = False):
+                 CHECKPOINT = False,
+                 tmean = 0,
+                 tsd = 1):
         
         self.RANDOM_STATE = RANDOM_STATE
         if self.RANDOM_STATE is not None:
             keras.utils.set_random_seed(RANDOM_STATE)
+
+        self.WINDOW_SIZE = WINDOW_SIZE
+        self.NUM_FEATS = NUM_FEATS
         
         self.LSTM_UNITS = LSTM_UNITS
         
@@ -43,12 +48,14 @@ class gw_LSTM(BaseEstimator,TransformerMixin):
 
         self.EPOCHS = EPOCHS
 
-        self.RANDOM_STATE = RANDOM_STATE
+        self.CHECKPOINT = CHECKPOINT
 
         self.model = None
 
         self.warmup = None
 
+        self.tmean = tmean
+        self.tsd = tsd
         
 
     def reshape_data(self, scaled_np, y=None):
@@ -56,6 +63,7 @@ class gw_LSTM(BaseEstimator,TransformerMixin):
         for i in range(len(scaled_np)-self.WINDOW_SIZE):
             row = [a for a in scaled_np[i:i+self.WINDOW_SIZE]]
             X.append(row)
+        #print(np.array(X)[0,0], np.array(X).shape)
         return np.array(X)
         
     def make_model(self):
@@ -100,34 +108,42 @@ class gw_LSTM(BaseEstimator,TransformerMixin):
         X_window = self.reshape_data(X_train)
 
         if self.CHECKPOINT == False:
-            self.model.fit(X_window, y_train, epochs=self.EPOCHS)
+            self.model.fit(X_window, y_train[self.WINDOW_SIZE:], 
+                            epochs=self.EPOCHS)
         else:
-            self.model.fit(X_window, y_train, 
+            self.model.fit(X_window, y_train[self.WINDOW_SIZE:], 
                             epochs=self.EPOCHS, 
                             callbacks=[self.CHECKPOINT])
 
         ## Return a warm up set to stick to the top of the test set later
         self.warmup = pd.DataFrame(X_train).tail(self.WINDOW_SIZE)
+
         
     def transform(self,X,y=None):
         self.model.transform(X,y)
 
     def predict(self,X_test,y_test=None):
         ## stick the warmup set to the top of the test set
-        X_df = pd.concat([self.warmup, pd.DataFrame(X_test)])
+        X_df = pd.concat([self.warmup, 
+                        pd.DataFrame(X_test)]).reset_index(drop=True)
+        #display(X_df)
 
         preds=[]
 
         for i in range(X_test.shape[0]):
             # reshape a row at a time
-            row = to_X_y_multi(X_df[i:i+WINDOW_SIZE+1])
+            row = self.reshape_data(np.array(X_df[i:i+self.WINDOW_SIZE+1]))
+            #print(row)
             
             # make prediction and store it
-            pred = LSTM_mod.predict(row).flatten()[0]
+            pred = self.model.predict(row).flatten()[0]
             preds.append(pred)
+            #print(preds)
             
             #insert prediction into the correct place for the next loop
-            X_df[WINDOW_SIZE+i,0] = pred
+            #print('before')
+            X_df[0][self.WINDOW_SIZE+i] = (pred - self.tmean) / self.tsd
+            #print('value set to', X_df[0][self.WINDOW_SIZE+i])
 
         return np.array(preds)
 
