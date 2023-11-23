@@ -16,10 +16,16 @@ from sklearn.base import BaseEstimator,TransformerMixin
 ## Defining a custom sklearn estimator to implement our keras model
 ## inside a sklearn pipeline
 
+
 '''
-This version is to run the model.
-It assumes that the test set that is passed to the predict function
-already contains the warmup period
+This version is specifically for the grid search/running cross validation.
+In that, the training and test sets are chosen automatically by the
+TimeSeriesSplit and as far as I can tell, it doesn't contain a way for me
+to include a warmup period in the test set for predictions
+
+This version creates a warmup set in the training step and passes that to 
+the predict function. I recognize that this is duct tape and lies, but we're
+only doing the grid search once so :shrug:
 '''
 class gw_LSTM(BaseEstimator,TransformerMixin):
     def __init__(self, 
@@ -57,6 +63,8 @@ class gw_LSTM(BaseEstimator,TransformerMixin):
         self.CHECKPOINT = CHECKPOINT
 
         self.model = None
+
+        self.warmup = None
 
         self.tmean = tmean
         self.tsd = tsd
@@ -123,19 +131,22 @@ class gw_LSTM(BaseEstimator,TransformerMixin):
                             callbacks=[self.CHECKPOINT])
             # in order to implement this, we need to plug a val set into the model fitting, and I haven't worked out the details for how to do that, so just setting checkpoint as false all the time now I think
 
+        ## Return a warm up set to stick to the top of the test set later
+        self.warmup = pd.DataFrame(X_train).tail(self.WINDOW_SIZE)
+
         
     def transform(self,X,y=None):
         self.model.transform(X,y)
 
     def predict(self,X_test,y_test=None):
-        ## X_test already contains the warmup set in this case
-        ## so it has length of TEST_SIZE+WINDOW_SIZE
-        X_df = X_test.copy().reset_index(drop=True)
+        ## stick the warmup set to the top of the test set
+        X_df = pd.concat([self.warmup, 
+                        pd.DataFrame(X_test)]).reset_index(drop=True)
         #display(X_df)
 
         preds=[]
 
-        for i in range(X_test.shape[0]-self.WINDOW_SIZE):
+        for i in range(X_test.shape[0]):
             # reshape a row at a time
             row = self.reshape_data(np.array(X_df[i:i+self.WINDOW_SIZE+1]))
             #print(row)
