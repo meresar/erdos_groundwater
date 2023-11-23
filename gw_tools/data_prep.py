@@ -192,7 +192,7 @@ def LSTM_data_prep(df, TEST_SIZE=365, WINDOW_SIZE):
 
     return X_train, X_test, well_tr_mean, well_tr_std
 
-def LSTM_future(feats, end, feats_end, end_date, WINDOW_SIZE):
+def LSTM_future(feats, end, feats_end, WINDOW_SIZE):
     '''
     The LSTM model requires the target to be included in the inputs
     and a warmup set
@@ -221,14 +221,13 @@ def LSTM_future(feats, end, feats_end, end_date, WINDOW_SIZE):
         contains the data necessary for the LSTM model to run, including a 
         warmup window
     '''
-    feats_future = feats.loc[features.date > end_date].copy()
-    to_predict = pd.concat([feats_end[-WINDOW_SIZE:],feats_future])
+    to_predict = pd.concat([feats_end[-WINDOW_SIZE:],feats])
     well_vals = end[-WINDOW_SIZE:]
 
     for val,i in zip(well_vals,range(len(well_vals))):
         to_predict.avg_well_depth.iloc[i] = val
 
-    return to_predict
+    return to_predict.reset_index(drop=True)
 
 def get_end_date(well):
     return well_end_dates[well]
