@@ -155,6 +155,39 @@ def prep_data_for_training(df, n=365):
 
     return X_train, X_holdout, y_train, y_holdout, dt_train, dt_holdout
 
+def LSTM_data_prep(df, TEST_SIZE=365):
+    '''
+    The LSTM model requires the target to be included in the inputs
+    so I don't pop it off like in the prep_data_for_training above
+
+    It also needs the training mean and standard deviation to scale
+    the recursive predictions
+
+    Parameters
+    ----------
+    TEST_SIZE : int (Default: 365)
+        The number of days to include in the holdout set
+
+    Returns
+    -------
+    This function returns the following as np.arrays():
+    - X_train
+        The training feature data (INCLUDING avg_well_depth, date as index)
+    - X_holdout
+        The holdout feature data (INCLUDING avg_well_depth, date as index)
+    - well_tr_mean
+        the mean of the avg_well_depth on the training set
+    - well_tr_std
+        the standard deviation of the avg_well_depth on the training set   
+'''
+    X_train = df[:-TEST_SIZE].copy().set_index('date')
+    X_test = df[-TEST_SIZE:].copy().set_index('date')
+
+    well_tr_mean = np.mean(X_train.avg_well_depth.values)
+    well_tr_std = np.std(X_train.avg_well_depth.values)
+
+    return X_train, X_test, well_tr_mean, well_tr_std
+
 def get_end_date(well):
     return well_end_dates[well]
 
