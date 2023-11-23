@@ -155,7 +155,7 @@ def prep_data_for_training(df, n=365):
 
     return X_train, X_holdout, y_train, y_holdout, dt_train, dt_holdout
 
-def LSTM_data_prep(df, TEST_SIZE=365):
+def LSTM_data_prep(df, TEST_SIZE=365, WINDOW_SIZE):
     '''
     The LSTM model requires the target to be included in the inputs
     so I don't pop it off like in the prep_data_for_training above
@@ -167,26 +167,68 @@ def LSTM_data_prep(df, TEST_SIZE=365):
     ----------
     TEST_SIZE : int (Default: 365)
         The number of days to include in the holdout set
+    WINDOW_SIZE : int
+        The size of the window to be considered in the model
+        (may vary by well)
 
     Returns
     -------
-    This function returns the following as np.arrays():
-    - X_train
+    This function returns the following:
+    - X_train : data frame
         The training feature data (INCLUDING avg_well_depth, date as index)
-    - X_holdout
+    - X_test : data frame
         The holdout feature data (INCLUDING avg_well_depth, date as index)
-    - well_tr_mean
+        includes a warmup set for the model
+    - well_tr_mean : float
         the mean of the avg_well_depth on the training set
-    - well_tr_std
+    - well_tr_std : float
         the standard deviation of the avg_well_depth on the training set   
-'''
+    '''
     X_train = df[:-TEST_SIZE].copy().set_index('date')
-    X_test = df[-TEST_SIZE:].copy().set_index('date')
+    X_test = df[-TEST_SIZE-WINDOW_SIZE:].copy().set_index('date')
 
     well_tr_mean = np.mean(X_train.avg_well_depth.values)
     well_tr_std = np.std(X_train.avg_well_depth.values)
 
     return X_train, X_test, well_tr_mean, well_tr_std
+
+def LSTM_future(feats, end, feats_end, end_date, WINDOW_SIZE):
+    '''
+    The LSTM model requires the target to be included in the inputs
+    and a warmup set
+
+    Parameters
+    ----------
+    feats : a data frame
+        contains the features (not including the well depth) for the dates beyond where we have well data, includes the date
+    end : list
+        contains (at least) the last WINDOW_SIZE values for the well data
+        could be predictions or actual data
+    feats_end : dataframe
+        contains (at least) the last WINDOW_SIZE values for the feature data
+        (*including* the well depth AND the date)
+        in practice, this will be the X_test as returned by the LSTM_data_prep
+    end_date : datetime
+        the last date in the well depth data (as returned by get_end_date)
+    WINDOW_SIZE : int
+        The size of the window to be considered in the model
+        (may vary by well)
+
+    Returns
+    -------
+    This function returns the following:
+    - to_predict : dataframe
+        contains the data necessary for the LSTM model to run, including a 
+        warmup window
+    '''
+    feats_future = feats.loc[features.date > end_date].copy()
+    to_predict = pd.concat([feats_end[-WINDOW_SIZE:],feats_future])
+    well_vals = end[-WINDOW_SIZE:]
+
+    for val,i in zip(well_vals,range(len(well_vals))):
+        to_predict.avg_well_depth.iloc[i] = val
+
+    return to_predict
 
 def get_end_date(well):
     return well_end_dates[well]
