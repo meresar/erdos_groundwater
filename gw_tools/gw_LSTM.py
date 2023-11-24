@@ -130,7 +130,7 @@ class gw_LSTM(BaseEstimator,TransformerMixin):
     def predict(self,X_test,y_test=None):
         ## X_test already contains the warmup set in this case
         ## so it has length of TEST_SIZE+WINDOW_SIZE
-        X_df = X_test.copy().reset_index(drop=True)
+        X_df = pd.DataFrame(X_test)
         #display(X_df)
 
         preds=[]
