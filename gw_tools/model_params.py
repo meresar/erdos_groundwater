@@ -96,16 +96,16 @@ LSTM_params_AEK201 = {'model__CHECKPOINT': False,
 
 
 LSTM_params_AFL259 = {'model__CHECKPOINT': False,
-                        'model__D_MAX_LAYERS': 8,
-                        'model__D_MIN_UNITS': 3,
-                        'model__D_TOP_UNITS': 30,
-                        'model__D_UNIT_SCALE': 0.1,
+                        'model__D_MAX_LAYERS': 1,
+                        'model__D_MIN_UNITS': 2,
+                        'model__D_TOP_UNITS': 8,
+                        'model__D_UNIT_SCALE': 0.5,
                         'model__EPOCHS': 30,
-                        'model__LEARNING_RATE': 0.0005,
-                        'model__LSTM_UNITS': 16,
+                        'model__LEARNING_RATE': 0.01,
+                        'model__LSTM_UNITS': 64,
                         'model__NUM_FEATS': 12,
                         'model__RANDOM_STATE': 90210,
-                        'model__WINDOW_SIZE': 45}
+                        'model__WINDOW_SIZE': 14}
 
 
 LSTM_params_APK309 = {'model__CHECKPOINT': False,
