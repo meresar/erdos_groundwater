@@ -155,7 +155,7 @@ def prep_data_for_training(df, n=365):
 
     return X_train, X_holdout, y_train, y_holdout, dt_train, dt_holdout
 
-def LSTM_data_prep(df, TEST_SIZE=365, WINDOW_SIZE):
+def LSTM_data_prep(df, WINDOW_SIZE, TEST_SIZE=365):
     '''
     The LSTM model requires the target to be included in the inputs
     so I don't pop it off like in the prep_data_for_training above

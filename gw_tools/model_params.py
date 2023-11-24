@@ -82,13 +82,67 @@ CNN_params_APK310 = {'model__BATCH_SIZE': 32,
 
 #LSTM params
 #############################################################################
-LSTM_params_AEK201=
-LSTM_params_AFL259=
-LSTM_params_APK309=
-LSTM_params_APK310=
+LSTM_params_AEK201 = {'model__CHECKPOINT': False,
+                        'model__D_MAX_LAYERS': 8,
+                        'model__D_MIN_UNITS': 3,
+                        'model__D_TOP_UNITS': 30,
+                        'model__D_UNIT_SCALE': 0.1,
+                        'model__EPOCHS': 30,
+                        'model__LEARNING_RATE': 0.001,
+                        'model__LSTM_UNITS': 64,
+                        'model__NUM_FEATS': 12,
+                        'model__RANDOM_STATE': 90210,
+                        'model__WINDOW_SIZE': 14}
+
+
+LSTM_params_AFL259 = {'model__CHECKPOINT': False,
+                        'model__D_MAX_LAYERS': 8,
+                        'model__D_MIN_UNITS': 3,
+                        'model__D_TOP_UNITS': 30,
+                        'model__D_UNIT_SCALE': 0.1,
+                        'model__EPOCHS': 30,
+                        'model__LEARNING_RATE': 0.0005,
+                        'model__LSTM_UNITS': 16,
+                        'model__NUM_FEATS': 12,
+                        'model__RANDOM_STATE': 90210,
+                        'model__WINDOW_SIZE': 45}
+
+
+LSTM_params_APK309 = {'model__CHECKPOINT': False,
+                        'model__D_MAX_LAYERS': 8,
+                        'model__D_MIN_UNITS': 3,
+                        'model__D_TOP_UNITS': 30,
+                        'model__D_UNIT_SCALE': 0.1,
+                        'model__EPOCHS': 30,
+                        'model__LEARNING_RATE': 0.0005,
+                        'model__LSTM_UNITS': 32,
+                        'model__NUM_FEATS': 12,
+                        'model__RANDOM_STATE': 90210,
+                        'model__WINDOW_SIZE': 45}
+
+
+LSTM_params_APK310 = {'model__CHECKPOINT': False,
+                        'model__D_MAX_LAYERS': 8,
+                        'model__D_MIN_UNITS': 3,
+                        'model__D_TOP_UNITS': 150,
+                        'model__D_UNIT_SCALE': 0.1,
+                        'model__EPOCHS': 30,
+                        'model__LEARNING_RATE': 0.0005,
+                        'model__LSTM_UNITS': 64,
+                        'model__NUM_FEATS': 12,
+                        'model__RANDOM_STATE': 90210,
+                        'model__WINDOW_SIZE': 60}
+
+
+
 
 wells = ['AEK201', 'AFL259', 'APK309', 'APK310']
 CNN_well_params = [CNN_params_AEK201, 
                     CNN_params_AFL259, 
                     CNN_params_APK309, 
                     CNN_params_APK310]
+
+LSTM_well_params = [LSTM_params_AEK201, 
+                    LSTM_params_AFL259, 
+                    LSTM_params_APK309, 
+                    LSTM_params_APK310]
