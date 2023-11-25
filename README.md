@@ -31,10 +31,10 @@ Ultimately, our goal is to be able to provide a forecast of groundwater levels w
 ## **Approach and Results**
 
 Using both models we successfully predicted GWL for the case study wells with high accuracy. Strategies implemented and results achieved are summarized below:
-* Baseline: We wanted a simple baseline against which we could compare more later models, so we chose to start with a simple model that predicts a constant output based on the average of the target values in the training set.
-* Linear Regression: As a second sort of baseline option, we used Scikit-Learn’s built in Linear Regression module to train a linear model on the training data.
-* CNN: While CNN’s are not typically associated with time series data, we did see examples where they had been applied to problems with similarities to ours. We were curious to see whether we could construct a model with this structure that could perform comparably to other models.
-* LSTM: A neural network typically used for time series data that was compared to CNN.
+* [Baseline](https://github.com/meresar/erdos_groundwater/blob/main/models/Model_Demo_Baseline.ipynb): We wanted a simple baseline against which we could compare more later models, so we chose to start with a simple model that predicts a constant output based on the average of the target values in the training set.
+* [Linear Regression](https://github.com/meresar/erdos_groundwater/blob/main/models/Model_Demo_LinearRegression.ipynb): As a second sort of baseline option, we used Scikit-Learn’s built in Linear Regression module to train a linear model on the training data.
+* [CNN](https://github.com/meresar/erdos_groundwater/blob/main/models/Model_Demo_CNN.ipynb): While CNN’s are not typically associated with time series data, we did see examples where they had been applied to problems with similarities to ours. We were curious to see whether we could construct a model with this structure that could perform comparably to other models.
+* [LSTM](https://github.com/meresar/erdos_groundwater/blob/main/models/Model_Demo_LSTM.ipynb): A neural network typically used for time series data that was compared to CNN.
 
 ## **Future Iterations**
 * Seasonal ARIMA
