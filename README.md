@@ -41,7 +41,7 @@ Using both models we successfully predicted GWL for the case study wells with hi
 * Additional parameter tuning
 * Model serialization
 * Wells at other locations
-* More interactive web Interface
+* More interactive web interface
 
 # **Authors**
 * [Marcos Ortiz](https://www.linkedin.com/in/passpassthemath/)
