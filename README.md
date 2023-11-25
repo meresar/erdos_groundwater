@@ -7,6 +7,7 @@ The purpose of this project is to use a neural network modeling approach to pred
 ## **Overview**
 
 Groundwater is a critical source of water for human survival. A significant percentage of both drinking and crop irrigation water is drawn from groundwater sources through wells. In the US, overuse of groundwater could have major implications for the future.
+
 Machine learning, deep learning, and time series techniques have shown promise for helping understand and address these problems. In this project  we implemented Convolutional Neural Network (CNN) and Long Short-Term Memory (LSTM) to predict Groundwater Levels (GWL) in selected wells located in Columbia Plateau basaltic-rock and basin-fill aquifers: one of the principal aquifers of the U.S  using  historical well, weather and surface data such as  temperature, precipitation,  humidity, wind speed , river height and discharge rate etc.
 
 Ultimately, our goal is to be able to provide a forecast of groundwater levels while accounting for uncertainties that can be used to help inform water use policy decisions for stakeholders. An interactive web application using Streamlit dashboard was also implemented to provide end-users friendly graphical interface for predicting and forecasting groundwater levels.
