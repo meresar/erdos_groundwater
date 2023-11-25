@@ -1,5 +1,3 @@
-# erdos_groundwater
-
 # **Predicting Groundwater Levels in Spokane, Washington**
 The purpose of this project is to use a neural network modeling approach to predict groundwater levels in Spokane, Washington using weather and surface water data. The final outcome can be viewed in the Streamlit App.
 # **Description**
