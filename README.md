@@ -1,5 +1,7 @@
 # **Predicting Groundwater Levels in Spokane, Washington**
-The purpose of this project is to use a neural network modeling approach to predict groundwater levels in Spokane, Washington using weather and surface water data. The final outcome can be viewed in the Streamlit App.
+
+The purpose of this project is to use a neural network modeling approach to predict groundwater levels in Spokane, Washington using weather and surface water data. The final outcome can be viewed in the Streamlit Web App (described below).
+
 # **Description**
 
 ## **Overview**
@@ -35,6 +37,22 @@ Using both models we successfully predicted GWL for the case study wells with hi
 * [Linear Regression](https://github.com/meresar/erdos_groundwater/blob/main/models/Model_Demo_LinearRegression.ipynb): As a second sort of baseline option, we used Scikit-Learn’s built in Linear Regression module to train a linear model on the training data.
 * [CNN](https://github.com/meresar/erdos_groundwater/blob/main/models/Model_Demo_CNN.ipynb): While CNN’s are not typically associated with time series data, we did see examples where they had been applied to problems with similarities to ours. We were curious to see whether we could construct a model with this structure that could perform comparably to other models.
 * [LSTM](https://github.com/meresar/erdos_groundwater/blob/main/models/Model_Demo_LSTM.ipynb): A neural network typically used for time series data that was compared to CNN.
+
+## **Streamlit**
+
+Our ML models are deployed in the form of a web app using Streamlit. The user can select the well they are interested in and iteratively view the output of each model. The web app is structured in the following manner:
+* A primary landing page which includes:
+  * An interactive map of the four wells.
+  * A short description of the project.
+* A navigation bar which includes:
+  * A dropdown selection box for well selection (and an additional blank selection to return to the landing page).
+  * An information dropdown with well information (brief location based description of wells).
+* Well specific pages that include:
+  * An Interactive map indicating in blue the selected well.
+  * A short description of the well.
+  * The interactive forecast plot.
+  * RMSE/MAE error for each model.
+Currently, the web app imports the pickled outputs as opposed to running the ML models internally.
 
 ## **Future Iterations**
 * Seasonal ARIMA
