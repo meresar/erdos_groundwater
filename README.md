@@ -40,7 +40,7 @@ Using both models we successfully predicted GWL for the case study wells with hi
 
 ## [**Streamlit**](https://erdosgroundwaterforecast.streamlit.app/)
 
-Our ML models are deployed in the form of a web app using Streamlit. The user can select the well they are interested in and iteratively view the output of each model. The web app is structured in the following manner:
+Our ML models are deployed in the form of a web app using [Streamlit](https://erdosgroundwaterforecast.streamlit.app/). The user can select the well they are interested in and iteratively view the output of each model. The web app is structured in the following manner:
 * A primary landing page which includes:
   * An interactive map of the four wells.
   * A short description of the project.
