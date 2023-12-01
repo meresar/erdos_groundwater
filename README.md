@@ -64,20 +64,19 @@ Currently, the web app imports the pickled outputs as opposed to running the ML 
 
 ## **Citation**
 
-* Washington State Department of Ecology [WDOE], Environmental Information Management System, AEK201 Time-series List database accessed November 1, 2023, [AEK201] (https://apps.ecology.wa.gov/eim/search/Eim/EIMSearchResults.aspx?ResultType=TimeSeriesLocationList&EIMSearchResultsFirstPageVisit=false&LocationSystemId=100018881&LocationUserIds=AEK201&LocationUserIdSearchType=Equals&LocationUserIDAliasSearchFlag=True)
+* Washington State Department of Ecology [WDOE], Environmental Information Management System, AEK201 Time-series List database accessed November 1, 2023, [AEK201](https://apps.ecology.wa.gov/eim/search/Eim/EIMSearchResults.aspx?ResultType=TimeSeriesLocationList&EIMSearchResultsFirstPageVisit=false&LocationSystemId=100018881&LocationUserIds=AEK201&LocationUserIdSearchType=Equals&LocationUserIDAliasSearchFlag=True)
 
-* Washington State Department of Ecology [WDOE], Environmental Information Management System, APK309 Time-series List database accessed November 1, 2023, [APK309] (https://apps.ecology.wa.gov/eim/search/Eim/EIMSearchResults.aspx?ResultType=TimeSeriesLocationList&EIMSearchResultsFirstPageVisit=false&StudySystemIds=22839174&StudyUserIds=EROGWDB&StudyUserIdSearchType=Equals&LocationSystemId=100080103&LocationUserIds=APK309&LocationUserIdSearchType=Equals&LocationUserIDAliasSearchFlag=True)
+* Washington State Department of Ecology [WDOE], Environmental Information Management System, APK309 Time-series List database accessed November 1, 2023, [APK309](https://apps.ecology.wa.gov/eim/search/Eim/EIMSearchResults.aspx?ResultType=TimeSeriesLocationList&EIMSearchResultsFirstPageVisit=false&StudySystemIds=22839174&StudyUserIds=EROGWDB&StudyUserIdSearchType=Equals&LocationSystemId=100080103&LocationUserIds=APK309&LocationUserIdSearchType=Equals&LocationUserIDAliasSearchFlag=True)
 
-* Washington State Department of Ecology [WDOE], Environmental Information Management System, APK310 Time-series List database accessed November 1, 2023, [APK310] (https://apps.ecology.wa.gov/eim/search/Eim/EIMSearchResults.aspx?ResultType=TimeSeriesLocationList&EIMSearchResultsFirstPageVisit=false&StudySystemIds=22839174&StudyUserIds=EROGWDB&StudyUserIdSearchType=Equals&LocationSystemId=100080102&LocationUserIds=APK310&LocationUserIdSearchType=Equals&LocationUserIDAliasSearchFlag=True)
+* Washington State Department of Ecology [WDOE], Environmental Information Management System, APK310 Time-series List database accessed November 1, 2023, [APK310](https://apps.ecology.wa.gov/eim/search/Eim/EIMSearchResults.aspx?ResultType=TimeSeriesLocationList&EIMSearchResultsFirstPageVisit=false&StudySystemIds=22839174&StudyUserIds=EROGWDB&StudyUserIdSearchType=Equals&LocationSystemId=100080102&LocationUserIds=APK310&LocationUserIdSearchType=Equals&LocationUserIDAliasSearchFlag=True)
 
-* Washington State Department of Ecology [WDOE], Environmental Information Management System, AFK259 Time-series List database accessed November 1, 2023, [AFL259] (https://apps.ecology.wa.gov/eim/search/Eim/EIMSearchResults.aspx?ResultType=TimeSeriesLocationList&EIMSearchResultsFirstPageVisit=false&StudySystemIds=22839174&StudyUserIds=EROGWDB&StudyUserIdSearchType=Equals&LocationSystemId=100079507&LocationUserIds=AFL259&LocationUserIdSearchType=Equals&LocationUserIDAliasSearchFlag=True)
+* Washington State Department of Ecology [WDOE], Environmental Information Management System, AFK259 Time-series List database accessed November 1, 2023, [AFL259](https://apps.ecology.wa.gov/eim/search/Eim/EIMSearchResults.aspx?ResultType=TimeSeriesLocationList&EIMSearchResultsFirstPageVisit=false&StudySystemIds=22839174&StudyUserIds=EROGWDB&StudyUserIdSearchType=Equals&LocationSystemId=100079507&LocationUserIds=AFL259&LocationUserIdSearchType=Equals&LocationUserIDAliasSearchFlag=True)
 
-* NOAA National Centers for Environmental Information. Past Weather, Spokane International Airport, WA US,accessed November 1, 2023, [NOAA_Spokane]
-(https://www.ncei.noaa.gov/access/past-weather/Spokane%2C%20Washington)
+* NOAA National Centers for Environmental Information. Past Weather, Spokane International Airport, WA US,accessed November 1, 2023, [NOAA_Spokane](https://www.ncei.noaa.gov/access/past-weather/Spokane%2C%20Washington)
 
-* Spokane County,Washington, Weather Data by OpenWeather is licenced under CC BY 4.0, [OpenWeather_Spokane] (https://openweathermap.org/)
+* Spokane County,Washington, Weather Data by OpenWeather is licenced under CC BY 4.0, [OpenWeather_Spokane](https://openweathermap.org/)
 
-* USGS. National Water Information System: USGS 12422500 Spokane River at Spokane, WA., accessed November 1, 2023,[USGS_Spokane] (https://nwis.waterdata.usgs.gov/nwis/dv?site_no=12422500)
+* USGS. National Water Information System: USGS 12422500 Spokane River at Spokane, WA., accessed November 1, 2023,[USGS_Spokane](https://nwis.waterdata.usgs.gov/nwis/dv?site_no=12422500)
 
 
 # **Authors**
