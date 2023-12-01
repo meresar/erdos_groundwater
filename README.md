@@ -38,9 +38,9 @@ Using both models we successfully predicted GWL for the case study wells with hi
 * [CNN](https://github.com/meresar/erdos_groundwater/blob/main/models/Model_Demo_CNN.ipynb): While CNN’s are not typically associated with time series data, we did see examples where they had been applied to problems with similarities to ours. We were curious to see whether we could construct a model with this structure that could perform comparably to other models.
 * [LSTM](https://github.com/meresar/erdos_groundwater/blob/main/models/Model_Demo_LSTM.ipynb): A neural network typically used for time series data that was compared to CNN.
 
-## **Streamlit**
+## [**Streamlit**](https://erdosgroundwaterforecast.streamlit.app/)
 
-Our ML models are deployed in the form of a web app using Streamlit. The user can select the well they are interested in and iteratively view the output of each model. The web app is structured in the following manner:
+Our ML models are deployed in the form of a web app using [Streamlit](https://erdosgroundwaterforecast.streamlit.app/). The user can select the well they are interested in and iteratively view the output of each model. The web app is structured in the following manner:
 * A primary landing page which includes:
   * An interactive map of the four wells.
   * A short description of the project.
