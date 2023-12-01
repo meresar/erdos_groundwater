@@ -62,7 +62,7 @@ Currently, the web app imports the pickled outputs as opposed to running the ML 
 * Wells at other locations
 * More interactive web interface
 
-## **Citation**
+## **Citations**
 
 * Washington State Department of Ecology [WDOE], Environmental Information Management System, AEK201 Time-series List database accessed November 1, 2023, [AEK201](https://apps.ecology.wa.gov/eim/search/Eim/EIMSearchResults.aspx?ResultType=TimeSeriesLocationList&EIMSearchResultsFirstPageVisit=false&LocationSystemId=100018881&LocationUserIds=AEK201&LocationUserIdSearchType=Equals&LocationUserIDAliasSearchFlag=True)
 
