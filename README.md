@@ -30,7 +30,7 @@ Ultimately, our goal is to be able to provide a forecast of groundwater levels w
   * OpenWeather.com weather data contained NaN values replaced with zeros.
   * Surface water data had missing values, filled with the value before the gap.
 
-## **Approach and Results**
+## **Approach**
 
 Using both models we successfully predicted GWL for the case study wells with high accuracy. Strategies implemented and results achieved are summarized below:
 * [Baseline](https://github.com/meresar/erdos_groundwater/blob/main/models/Model_Demo_Baseline.ipynb): We wanted a simple baseline against which we could compare more later models, so we chose to start with a simple model that predicts a constant output based on the average of the target values in the training set.
