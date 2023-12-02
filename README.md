@@ -2,6 +2,12 @@
 
 The purpose of this project is to use a neural network modeling approach to predict groundwater levels in Spokane, Washington using weather and surface water data. The final outcome can be viewed in the Streamlit Web App (described below).
 
+# **Authors**
+* [Marcos Ortiz](https://www.linkedin.com/in/passpassthemath/)
+* [Meredith Sargent](https://www.linkedin.com/in/meresar/)
+* [Riti Bahl](https://www.linkedin.com/in/ritibahl/)
+* [Chelsea Gary](https://www.linkedin.com/in/chelseargary/)
+* [Anireju Emmanuel Dudun](https://www.linkedin.com/in/anireju-emmanuel-dudun-78359153/)
 # **Description**
 
 ## **Overview**
@@ -77,11 +83,3 @@ Currently, the web app imports the pickled outputs as opposed to running the ML 
 * Spokane County,Washington, Weather Data by OpenWeather is licenced under CC BY 4.0, [OpenWeather_Spokane](https://openweathermap.org/)
 
 * USGS. National Water Information System: USGS 12422500 Spokane River at Spokane, WA., accessed November 1, 2023,[USGS_Spokane](https://nwis.waterdata.usgs.gov/nwis/dv?site_no=12422500)
-
-
-# **Authors**
-* [Marcos Ortiz](https://www.linkedin.com/in/passpassthemath/)
-* [Meredith Sargent](https://www.linkedin.com/in/meresar/)
-* [Riti Bahl](https://www.linkedin.com/in/ritibahl/)
-* [Chelsea Gary](https://www.linkedin.com/in/chelseargary/)
-* [Anireju Emmanuel Dudun](https://www.linkedin.com/in/anireju-emmanuel-dudun-78359153/)
